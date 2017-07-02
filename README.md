@@ -63,3 +63,4 @@ See more about build customization at [travis-ci #customizing-the-build](https:/
 
 **A**: Sure! Head to `trigger_build` in the script and change it there.
 
+[![Build Status](https://travis-ci.com/cirocosta/travis-triggerer.svg?token=ixZ9XiEPW4YH62ixq7Av&branch=master)](https://travis-ci.com/cirocosta/travis-triggerer)
