@@ -1,7 +1,8 @@
 #!/bin/bash
 
 set -o errexit
-set -o xtrace
+
+readonly TRAVIS_API_ADDRESS="${TRAVIS_API_ADDRESS:-https://api.travis-ci.com}"
 
 main() {
   local repo=$1
@@ -70,15 +71,18 @@ trigger_build() {
   local travis_repo=${repo/\//%2F}
   local body="{
   \"request\": {
-  \"message\": \"(AUTO) Triggered by Travis [repo=$TRAVIS_REPO_SLUG],build=$TRAVIS_BUILD_ID]\",
-    \"branch\": \"master\",
+    \"message\": \"(AUTO) Triggered by Travis [repo=$TRAVIS_REPO_SLUG],build=$TRAVIS_BUILD_ID]\",
+    \"branch\": \"master\"
   }
 }"
 
-  exit 0
-
   echo "INFO:
-  Triggering build for repository [$repo]"
+  Triggering build for repository [$repo].
+  
+  TRAVIS_BUILD_ID:    $TRAVIS_BUILD_ID
+  TRAVIS_REPO_SLUG:   $TRAVIS_REPO_SLUG
+  TRAVIS_API_ADDRESS: $TRAVIS_API_ADDRESS
+  "
 
   local request_status_code=$(
     curl \
@@ -90,7 +94,7 @@ trigger_build() {
       --header "Travis-API-Version: 3" \
       --header "Authorization: token $TRAVIS_ACCESS_TOKEN" \
       --data "$body" \
-      "https://api.travis-ci.com/repo/$travis_repo/requests"
+      "${TRAVIS_API_ADDRESS}/repo/$travis_repo/requests"
   )
 
   if [[ "$request_status_code" == "200" ]]; then
