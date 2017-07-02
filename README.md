@@ -54,7 +54,7 @@ See more about build customization at [travis-ci #customizing-the-build](https:/
 
 
 **Q**: How can I use it for the public offering of Travis (i.e, [travis-ci.org](https://travis-ci.org)?
-**A**: Generate an API token for `org` and then, in the script, replace `.com` by `.org`.
+**A**: Generate an API token for `org` and then, in the script, replace `.com` by `.org` or just set `TRAVIS_API_ADDRESS` environment variable to `https://api.travis-ci.com`
 
 
 **Q**: Can I customize the commit message?
