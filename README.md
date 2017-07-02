@@ -49,14 +49,17 @@ See more about build customization at [travis-ci #customizing-the-build](https:/
 
 #### FAQ
 
-**Q**: Can I customize it?
+- **Q**: Can I customize it?
+
 **A**: Of course! This is just a little script following [travis-ci #triggering-builds](https://docs.travis-ci.com/user/triggering-builds/).
 
 
-**Q**: How can I use it for the public offering of Travis (i.e, [travis-ci.org](https://travis-ci.org)?
+- **Q**: How can I use it for the public offering of Travis (i.e, [travis-ci.org](https://travis-ci.org)?
+
 **A**: Generate an API token for `org` and then, in the script, replace `.com` by `.org` or just set `TRAVIS_API_ADDRESS` environment variable to `https://api.travis-ci.com`
 
 
-**Q**: Can I customize the commit message?
+- **Q**: Can I customize the commit message?
+
 **A**: Sure! Head to `trigger_build` in the script and change it there.
 
