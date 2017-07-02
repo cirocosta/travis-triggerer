@@ -3,11 +3,14 @@ language: 'node_js'
 node_js:
   - '8'
 
+before_install:
+  - 'cd ./test'
+
 install:
-  - 'cd ./test && npm i'
+  - 'npm i'
 
 script:
-  - 'cd ./test && npm test'
+  - 'npm test'
 
 notifications:
   email: false
