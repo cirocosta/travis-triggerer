@@ -97,7 +97,7 @@ trigger_build() {
       "${TRAVIS_API_ADDRESS}/repo/$travis_repo/requests"
   )
 
-  if [[ "$request_status_code" == "200" ]]; then
+  if [[ "$request_status_code" == "202" ]]; then
     echo "
     Success! Build for repository $repo triggered.
     "
